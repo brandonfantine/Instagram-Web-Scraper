@@ -79,24 +79,19 @@ def build_adj_mat(bot, username, attribute, rows):
     with open(f'{attribute}_adjmat.txt', 'a') as file:
         file.write('\n'.join(matrix))
 
-    # Write down all recorded names for record-keeping
-    with open(f'allnodes', 'a') as node_file:
-        node_file.write('\n'.join(users))
-
-
 # Method to create connection with ind. server through cmd
 def scrape():
-    login_details = ["XXXXXXXXX", "XXXXXXXXX"]
+    login_details = ["instawebscraper@gmail.com", "Password1@"]
 
     # Set the username and password
     username = login_details[0]
     password = login_details[1]
 
-    rows = int(input('Enter number of rows in adjacency matrix: ')) # Update to always be max?
+    rows = 500
 
     usernames = input("Enter username(s) for Instagram account(s) being scraped: ").split(",")
 
-    attribute = input("Scrape Followers or Following: ")
+    attribute = "followers"
 
     # Emulate a mobile client of Instagram to allow for eased access to user information
     options = webdriver.ChromeOptions()
@@ -124,5 +119,5 @@ def scrape():
 
 # Run from cmd
 if __name__ == '__main__':
-    TIMEOUT = 15
+    TIMEOUT = 5
     scrape()
